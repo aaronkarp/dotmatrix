@@ -1,0 +1,43 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: black;
+}
+
+.dotMatrixSign {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.dotMatrix__cell {
+  width: 14vw;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dot, .dot--dark {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 50%;
+  background-color: yellow;
+  margin: 0;
+  padding: 0;
+  transition: all .5s;
+  perspective-origin: 50% 50%;
+}
+
+.dot:hover {
+  transform: rotate3d(0, 1, 0, 180deg);
+  background: #222222;
+}
+
+.dot--dark {
+  background-color: #222222;
+}
