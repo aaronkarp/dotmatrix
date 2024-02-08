@@ -23,8 +23,6 @@ body {
 }
 
 .dot, .dot--dark {
-  width: 2vw;
-  height: 2vw;
   border-radius: 50%;
   background-color: yellow;
   margin: 0;
@@ -40,4 +38,8 @@ body {
 
 .dot--dark {
   background-color: #222222;
+}
+
+.hidden {
+  visibility: hidden;
 }
