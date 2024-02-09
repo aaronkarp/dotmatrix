@@ -44,8 +44,8 @@ const characterMap = {
   "|": "eeeeeee",
   "\"": "dddaaaa",
   "'": "eeeaaaa",
-  ":": "aaeeaeg",
-  ";": "aaeeaee",
+  ":": "aaeeaee",
+  ";": "aaeeaeg",
   "<": "ihegehi",
   ">": "fgehegf",
   "[": "bfffffb",
@@ -141,6 +141,10 @@ const dotmatrix = (container, cols = 20, rows = 3, message) => {
         subStr = padString(subStr);
         strArray.push(subStr);
         subStr = word;
+        if (wordCount === str.length) {
+          subStr = padString(subStr);
+          strArray.push(subStr);
+        }
       }
     }
     return strArray;
