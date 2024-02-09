@@ -154,7 +154,16 @@ const dotmatrix = (container, cols = 20, rows = 3) => {
   });
   signStructure.classList.remove('hidden');
 
-  // Test string construction
+  const padString = (padStr) => {
+    let strLength = cols - padStr.length;
+    if (strLength > 1) {
+      for (let i = 1; i < (strLength / 2); i++) {
+        padStr = ` ${padStr} `;
+      }
+    }
+    return padStr;
+  }
+
   const buildStringArray = (str) => {
     let subStr = '';
     let strArray = [];
@@ -162,15 +171,16 @@ const dotmatrix = (container, cols = 20, rows = 3) => {
     let wordCount = 0;
     for (const word of str) {
       wordCount++;
-      tempStr = `${subStr} ${word}`;
-      tempStr = tempStr.trim();
+      tempStr = `${subStr} ${word}`.trim();
       if (tempStr.length <= cols) {
         subStr = tempStr;
         if (wordCount === str.length) {
+          subStr = padString(subStr);
           strArray.push(subStr);
           break;
         }
       } else {
+        subStr = padString(subStr);
         strArray.push(subStr);
         subStr = word;
       }
@@ -181,5 +191,4 @@ const dotmatrix = (container, cols = 20, rows = 3) => {
   const message = "I AM THE VERY MODEL OF A MODERN MAJOR GENERAL. I'VE INFORMATION VEGETABLE, ANIMAL, AND MINERAL.";
   
   buildStringArray(message.split(' '));
-
 }
