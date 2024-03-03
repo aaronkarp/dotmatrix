@@ -1,7 +1,7 @@
 import { mapSize, characterMap, rowMap } from "./charmap.js";
 
 const dotmatrix = (container, message, cols = 20, rows = 3) => {
-  const padString = (padStr) => {
+  const centerLine = (padStr) => {
     const spaces = cols - padStr.length;
 
     const start = padStr.length + Math.floor(spaces / 2);
@@ -23,16 +23,16 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
       if (tempStr.length <= cols) {
         subStr = tempStr;
         if (wordCount === str.length) {
-          subStr = padString(subStr);
+          subStr = centerLine(subStr);
           strArray.push(subStr);
           break;
         }
       } else {
-        subStr = padString(subStr);
+        subStr = centerLine(subStr);
         strArray.push(subStr);
         subStr = word;
         if (wordCount === str.length) {
-          subStr = padString(subStr);
+          subStr = centerLine(subStr);
           strArray.push(subStr);
         }
       }

@@ -26,15 +26,15 @@ export default class DotMatrix {
       if (tempLine.length <= this._cols) {
         line = tempLine;
         if (wordCount === str.length) {
-          line = this._padString(line);
+          line = this._centerLine(line);
           lines.push(line);
           break;
         }
       } else {
-        line = this._padString(line);
+        line = this._centerLine(line);
         lines.push(line);
         if (wordCount === str.length) {
-          line = this._padString(line);
+          line = this._centerLine(line);
           lines.push(line);
         }
       }
@@ -42,14 +42,12 @@ export default class DotMatrix {
     return lines;
   }
 
-  _padString(padStr) {
-    const spaces = (this._cols = padStr.length);
+  _centerLine(padStr) {
+    const spaces = this._cols - padStr.length;
 
     const start = padStr.length + Math.ceil(spaces / 2);
     padStr = padStr.padStart(start, " ");
-
-    const end = padStr.length + start + (spaces % 2);
-    padStr = padStr.padEnd(end, " ");
+    padStr = padStr.padEnd(cols, " ");
 
     return padStr;
   }
