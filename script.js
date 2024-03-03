@@ -103,7 +103,7 @@ const rowMap = {
   "6": "01001"
 }
 
-const dotmatrix = (container, cols = 20, rows = 3, message) => {
+const dotmatrix = (container, message, cols = 20, rows = 3) => {
 
   const padString = (padStr) => {
     let strLength = cols - padStr.length;
