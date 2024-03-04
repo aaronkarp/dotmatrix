@@ -42,14 +42,14 @@ export default class DotMatrix {
     return lines;
   }
 
-  _centerLine(padStr) {
-    const spaces = this._cols - padStr.length;
+  _centerLine(strToCtr) {
+    const spaces = this._cols - strToCtr.length;
 
-    const start = padStr.length + Math.ceil(spaces / 2);
-    padStr = padStr.padStart(start, " ");
-    padStr = padStr.padEnd(cols, " ");
+    const start = strToCtr.length + Math.ceil(spaces / 2);
+    strToCtr = strToCtr.padStart(start, " ");
+    strToCtr = strToCtr.padEnd(cols, " ");
 
-    return padStr;
+    return strToCtr;
   }
 
   _generateMarkup() {}

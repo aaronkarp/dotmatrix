@@ -12,7 +12,7 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
   };
 
   const buildStringArray = (str) => {
-    str = str.split(" ");
+    str = str.toUpperCase().split(" ");
     let subStr = "";
     let strArray = [];
     let tempStr = "";
@@ -41,8 +41,10 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
   };
 
   const renderChar = (char, cell) => {
+    // Add 'a' (meaning a full dark row) to top and bottom of character map for padding
     const charPlan = `a${characterMap[char]}a`;
     for (let r = 0; r < charPlan.length; r++) {
+      // Add 0 (off cell) to either end of each row for padding
       const rowPlan = `0${rowMap[charPlan[r]]}0`;
       for (let d = 0; d < rowPlan.length; d++) {
         const dot = document.createElement("div");
@@ -94,7 +96,7 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
 
 dotmatrix(
   "#dotmatrixContainer",
-  "ELEANOR IS READING THE PERCY JACKSON SERIES!",
+  "Eleanor is reading the Percy Jackson series!",
   20,
   3
 );
