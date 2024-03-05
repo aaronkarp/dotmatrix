@@ -1,5 +1,6 @@
 :root {
   --dot-width: 1px;
+  --cell-width: 5%;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
 }
 
 .dotMatrix__cell {
-  width: 14vw;
+  width: var(--cell-width);
   margin: 0;
   padding: 0;
   line-height: 0;

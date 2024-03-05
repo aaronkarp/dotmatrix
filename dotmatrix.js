@@ -5,12 +5,20 @@ export default class DotMatrix {
   _message;
   _cols;
   _rows;
+  _dotWidth;
+  _cellWidth;
 
   constructor(container, message, cols = 20, rows = 3) {
     this._parentElement = document.querySelector(container);
-    this._message = message;
+    this._message = message.toUpperCase();
     this._cols = cols;
     this._rows = rows;
+  }
+
+  render() {
+    this.sizeDots();
+    this._clear();
+    this._parentElement.innerHTML = this._generateMarkup();
   }
 
   _clear() {
@@ -30,16 +38,14 @@ export default class DotMatrix {
       if (tempLine.length <= this._cols) {
         line = tempLine;
         if (wordCount === str.length) {
-          line = this._centerLine(line);
-          lines.push(line);
+          lines.push(this._centerLine(line));
           break;
         }
       } else {
-        line = this._centerLine(line);
-        lines.push(line);
+        lines.push(this._centerLine(line));
+        line = word;
         if (wordCount === str.length) {
-          line = this._centerLine(line);
-          lines.push(line);
+          lines.push(this._centerLine(line));
         }
       }
     }
@@ -51,19 +57,58 @@ export default class DotMatrix {
 
     const start = strToCtr.length + Math.ceil(spaces / 2);
     strToCtr = strToCtr.padStart(start, " ");
-    strToCtr = strToCtr.padEnd(cols, " ");
+    strToCtr = strToCtr.padEnd(this._cols, " ");
 
     return strToCtr;
   }
 
-  _generateMarkup() {}
+  _generateChar(char) {
+    let markup = "";
+    const charPlan = `a${characterMap[char]}a`;
+    charPlan.split("").forEach((row) => {
+      const rowPlan = `0${rowMap[row]}0`;
+      rowPlan
+        .split("")
+        .forEach(
+          (dot) =>
+            (markup += `<div class="dot${dot === "0" ? "--dark" : ""}"></div>`)
+        );
+    });
+    return markup;
+  }
+
+  _generateMarkup() {
+    const textArr = this._generateStrArr();
+    let markup = '<div class="dotMatrixSign">';
+
+    textArr.forEach((row) => {
+      row.split("").forEach((char) => {
+        markup += `<div class="dotMatrix__cell">${this._generateChar(
+          char
+        )}</div>`;
+      });
+    });
+
+    markup += "</div>";
+    return markup;
+  }
 
   sizeDots() {
-    const dotDimension =
-      _container.offsetWidth * (1 / this._cols) * (1 / mapSize.cols);
+    this._dotWidth =
+      this._parentElement.offsetWidth * (1 / this._cols) * (1 / mapSize.cols);
     document.documentElement.style.setProperty(
       "--dot-width",
-      `${dotDimension}px`
+      `${this._dotWidth}px`
     );
+    this._cellWidth = 100 / this._cols;
+    document.documentElement.style.setProperty(
+      "--cell-width",
+      `${this._cellWidth}%`
+    );
+  }
+
+  setMessage(message) {
+    this._message = message.toUpperCase();
+    this.render();
   }
 }
