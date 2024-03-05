@@ -41,8 +41,20 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
   };
 
   const renderChar = (char, cell) => {
+    let markup = "";
     // Add 'a' (meaning a full dark row) to top and bottom of character map for padding
     const charPlan = `a${characterMap[char]}a`;
+    charPlan.split("").forEach((row) => {
+      const rowPlan = `0${rowMap[row]}0`;
+      rowPlan
+        .split("")
+        .forEach(
+          (dot) =>
+            (markup += `<div class="dot${dot === "0" ? "--dark" : ""}"></div>`)
+        );
+    });
+    console.log(markup);
+
     for (let r = 0; r < charPlan.length; r++) {
       // Add 0 (off cell) to either end of each row for padding
       const rowPlan = `0${rowMap[charPlan[r]]}0`;
