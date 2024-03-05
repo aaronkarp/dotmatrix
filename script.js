@@ -11,3 +11,5 @@ sign.render();
 setTimeout(() => {
   sign.setMessage(`I'm just hungry and talking about the galaxy and trains.`);
 }, 6000);
+
+window.addEventListener("resize", sign.sizeDots.bind(sign));
