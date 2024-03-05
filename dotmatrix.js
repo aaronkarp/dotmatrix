@@ -1,16 +1,20 @@
 import { mapSize, characterMap, rowMap } from "./charmap.js";
 
 export default class DotMatrix {
-  _container;
+  _parentElement;
   _message;
   _cols;
   _rows;
 
   constructor(container, message, cols = 20, rows = 3) {
-    this._container = document.querySelector(container);
+    this._parentElement = document.querySelector(container);
     this._message = message;
     this._cols = cols;
     this._rows = rows;
+  }
+
+  _clear() {
+    this._parentElement.innerHTML = "";
   }
 
   _generateStrArr() {

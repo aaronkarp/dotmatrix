@@ -41,19 +41,19 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
   };
 
   const renderChar = (char, cell) => {
-    let markup = "";
-    // Add 'a' (meaning a full dark row) to top and bottom of character map for padding
+    // let markup = "";
+    // // Add 'a' (meaning a full dark row) to top and bottom of character map for padding
     const charPlan = `a${characterMap[char]}a`;
-    charPlan.split("").forEach((row) => {
-      const rowPlan = `0${rowMap[row]}0`;
-      rowPlan
-        .split("")
-        .forEach(
-          (dot) =>
-            (markup += `<div class="dot${dot === "0" ? "--dark" : ""}"></div>`)
-        );
-    });
-    console.log(markup);
+    // charPlan.split("").forEach((row) => {
+    //   const rowPlan = `0${rowMap[row]}0`;
+    //   rowPlan
+    //     .split("")
+    //     .forEach(
+    //       (dot) =>
+    //         (markup += `<div class="dot${dot === "0" ? "--dark" : ""}"></div>`)
+    //     );
+    // });
+    // return markup;
 
     for (let r = 0; r < charPlan.length; r++) {
       // Add 0 (off cell) to either end of each row for padding
@@ -77,6 +77,14 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
   signStructure.classList.add("dotMatrixSign", "hidden");
 
   // Generate the cells of the sign and add them to the main sign structure container
+  // let markup = "";
+  // messageArr.forEach((row) => {
+  //   row.split("").forEach((char) => {
+  //     markup += `<div class="dotMatrix__cell">${renderChar(char)}</div>`;
+  //   });
+  // });
+  // console.log(markup);
+
   for (let i = 0; i < messageArr.length; i++) {
     for (let j = 0; j < messageArr[i].length; j++) {
       const cell = document.createElement("div");
