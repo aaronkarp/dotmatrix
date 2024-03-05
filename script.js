@@ -8,8 +8,21 @@ const sign = new DotMatrix(
 );
 sign.render();
 
-setTimeout(() => {
-  sign.setMessage(`I'm just hungry and talking about the galaxy and trains.`);
-}, 6000);
+const messages = [
+  "Sequester Grundleplinth MD",
+  "Beezer Twelve Washingbeard",
+  "We gonna be eatin' like Diane Keaton",
+  "We gonna Drax. Them. Sklounst.",
+  "Insubordinate and churlish.",
+  "I'm just hungry and talking about the galaxy and food",
+];
+
+let count = 0;
+
+setInterval(() => {
+  sign.setMessage(messages[count]);
+  count++;
+  if (count === messages.length) count = 0;
+}, 5000);
 
 window.addEventListener("resize", sign.sizeDots.bind(sign));

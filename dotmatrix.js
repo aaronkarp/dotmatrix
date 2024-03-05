@@ -10,7 +10,7 @@ export default class DotMatrix {
 
   constructor(container, message, cols = 20, rows = 3) {
     this._parentElement = document.querySelector(container);
-    this._message = message.toUpperCase();
+    this._message = message;
     this._cols = cols;
     this._rows = rows;
   }
@@ -26,7 +26,7 @@ export default class DotMatrix {
   }
 
   _generateStrArr() {
-    const str = this._message.split(" ");
+    const str = this._message.toUpperCase().split(" ");
     let line = "";
     let tempLine = "";
     let lines = [];
@@ -108,7 +108,7 @@ export default class DotMatrix {
   }
 
   setMessage(message) {
-    this._message = message.toUpperCase();
+    this._message = message;
     this.render();
   }
 }
