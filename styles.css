@@ -1,3 +1,7 @@
+:root {
+  --dot-width: 1px;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -22,12 +26,15 @@ body {
   flex-wrap: wrap;
 }
 
-.dot, .dot--dark {
+.dot,
+.dot--dark {
   border-radius: 50%;
+  width: var(--dot-width);
+  height: var(--dot-width);
   background-color: yellow;
   margin: 0;
   padding: 0;
-  transition: all .5s;
+  transition: all 0.5s;
   perspective-origin: 50% 50%;
 }
 

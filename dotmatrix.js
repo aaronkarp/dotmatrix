@@ -53,4 +53,13 @@ export default class DotMatrix {
   }
 
   _generateMarkup() {}
+
+  sizeDots() {
+    const dotDimension =
+      _container.offsetWidth * (1 / this._cols) * (1 / mapSize.cols);
+    document.documentElement.style.setProperty(
+      "--dot-width",
+      `${dotDimension}px`
+    );
+  }
 }

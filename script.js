@@ -86,11 +86,10 @@ const dotmatrix = (container, message, cols = 20, rows = 3) => {
   // Calculate the width of each dot (container width / (1 / columns in sign) / (1 / columns per character)px
   const dotDimension =
     signStructure.offsetWidth * (1 / cols) * (1 / mapSize.cols);
-  const allDots = document.querySelectorAll(".dot, .dot--dark");
-  allDots.forEach((dot) => {
-    dot.style.width = dotDimension + "px";
-    dot.style.height = dotDimension + "px";
-  });
+  document.documentElement.style.setProperty(
+    "--dot-width",
+    `${dotDimension}px`
+  );
   signStructure.classList.remove("hidden");
 };
 
