@@ -6,4 +6,4 @@ Not too long ago, I had to drive home alone from my parents' place in Virginia, 
 
 _"I bet that would be really easy to do for the web._
 
-And thus, DotMatrix was born: a script to render messages in the style of those road signs.
+And thus, DotMatrix was born: a script to render messages in the style of those road signs. It's still in its early stages, but it's coming along nicely.
