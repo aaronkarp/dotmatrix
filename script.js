@@ -14,7 +14,7 @@ const messages = [
   "We gonna be eatin' like Diane Keaton",
   "We gonna Drax. Them. Sklounst.",
   "Insubordinate and churlish.",
-  "I'm just hungry and talking about the galaxy and food",
+  "I'm just hungry and talking about the galaxy and trains",
 ];
 
 let count = 0;
